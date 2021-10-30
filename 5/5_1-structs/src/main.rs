@@ -69,3 +69,10 @@ fn tuple_struct() {
     println!("origin.1: {}", origin.1);
     println!("origin.2: {}", origin.2);
 }
+
+
+fn unit_like_structs() {
+    struct AlwaysEqual;
+
+    let subject = AlwaysEqual;
+}
