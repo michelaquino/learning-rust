@@ -27,7 +27,14 @@ fn main() {
     println!("This is the message Message::Quit called: {:?}", Message::Quit.call());
     println!("This is the message Message::Move called: {:?}", Message::Move{x: 1, y: 2}.call());
     println!("This is the message Message::Write called: {:?}", Message::Write(String::from("A message")).call());
-    println!("This is the message Message::ChangeColor called: {:?}", Message::ChangeColor(1, 2, 3 ).call())
+    println!("This is the message Message::ChangeColor called: {:?}", Message::ChangeColor(1, 2, 3 ).call());
+    
+    let some_number = Some(5);
+    let some_string = Some("a string");
+    let absent_number: Option<i32> = None;
+    println!("some_number: {:?}", some_number);
+    println!("some_string: {:?}", some_string);
+    println!("absent_number: {:?}", absent_number);
 }
 
 #[derive(Debug)]
