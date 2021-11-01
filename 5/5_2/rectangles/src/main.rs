@@ -3,8 +3,14 @@ fn main() {
     let height = 50;
     let dimensions = (30, 50);
 
-    println!("The area of retangle is {}", area(widht, height));
-    println!("[Tuple] The area of retangle is {}", area_tuple(dimensions));
+    let rectangle = Rectangle{
+        width: 30,
+        height: 50,
+    };
+
+    println!("The area of rectangle is {}", area(widht, height));
+    println!("[Tuple] The area of rectangle is {}", area_tuple(dimensions));
+    println!("[Struct] The area of rectangle is {}", area_struct(&rectangle));
 }
 
 fn area(widht: i32, height: i32) -> i32 {
@@ -13,4 +19,14 @@ fn area(widht: i32, height: i32) -> i32 {
 
 fn area_tuple(dimensions: (i32, i32)) -> i32 {
     return dimensions.0 * dimensions.1
+}
+
+struct Rectangle {
+    width: i32,
+    height: i32
+}
+
+// & -> borrow
+fn area_struct(rectangle: &Rectangle) -> i32 {
+    rectangle.width * rectangle.height
 }
