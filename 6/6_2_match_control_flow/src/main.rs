@@ -10,6 +10,8 @@ fn main() {
     println!("Six: {:?}", six);
     let none = plus_one(None);
     println!("None: {:?}", none);
+
+    matches_are_exhaustive_1();
 }
 
 fn value_in_cents(coin: &Coin) -> u8 {
@@ -57,5 +59,43 @@ fn plus_one(x: Option<i32>) -> Option<i32> {
     match x {
         None => None,
         Some(i) => Some(i+1)
+    }
+}
+
+
+fn matches_are_exhaustive_1() {
+    let dice_roll = 9;
+    match dice_roll {
+        3 => add_fancy_hat(),
+        7 => remove_fancy_hat(),
+        other => move_player(other),
+    }
+
+    fn add_fancy_hat() {
+        println!("add_fancy_hat");
+    }
+    fn remove_fancy_hat() {
+        println!("remove_fancy_hat");
+    }
+    
+    fn move_player(num_spaces: u8) {
+        println!("move_player. num_spaces: {}", num_spaces);
+    }
+}
+
+fn matches_are_exhaustive_2() {
+    let dice_roll = 9;
+    match dice_roll {
+        3 => add_fancy_hat(),
+        7 => remove_fancy_hat(),
+        _ => (),
+    }
+
+    fn add_fancy_hat() {
+        println!("add_fancy_hat");
+    }
+    
+    fn remove_fancy_hat() {
+        println!("remove_fancy_hat");
     }
 }
