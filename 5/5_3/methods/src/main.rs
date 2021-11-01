@@ -12,6 +12,8 @@ fn main() {
     println!("width is greater than 0? {}", rectangle1.width());
     println!("The area of rectangle {:?} is {}", rectangle1, rectangle1.area());
     println!("Rectangle {:?} can hold rectangle {:?}? {}", rectangle1, rectangle2, rectangle1.can_hold(&rectangle2));
+
+    println!("This is an example of associated function: {:?}", Rectangle::square(10))
 }
 
 #[derive(Debug)]
@@ -31,5 +33,12 @@ impl Rectangle {
     
     fn can_hold(&self, another: &Rectangle) -> bool {
         self.area() > another.area()
+    }
+
+    fn square(size: i32) -> Rectangle {
+        return Rectangle{
+            width: size,
+            height: size
+        }
     }
 }
