@@ -20,6 +20,9 @@ fn main() {
 
     println!("localhost: {:?}", IpKind::V4(String::from("127.0.0.1")));
     println!("loopback: {:?}", IpKind::V6(String::from("::1")));
+   
+    println!("[constructor] localhost: {:?}", IpKindConstructor::V4(127, 0, 0, 1));
+    println!("[constructor] loopback: {:?}", IpKindConstructor::V6(String::from("::1")));
 }
 
 #[derive(Debug)]
@@ -37,5 +40,11 @@ enum IpAddrKind {
 #[derive(Debug)]
 enum IpKind {
     V4(String),
+    V6(String),
+}
+
+#[derive(Debug)]
+enum IpKindConstructor {
+    V4(u8, u8, u8, u8),
     V6(String),
 }
