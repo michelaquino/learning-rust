@@ -1,11 +1,17 @@
 fn main() {
-    let rectangle = Rectangle {
+    let rectangle1 = Rectangle {
         width: 30,
         height: 30
     };
+    
+    let rectangle2 = Rectangle {
+        width: 10,
+        height: 10
+    };
 
-    println!("width is greater than 0? {}", rectangle.width());
-    println!("The area of rectangle {:?} is {}", rectangle, rectangle.area());
+    println!("width is greater than 0? {}", rectangle1.width());
+    println!("The area of rectangle {:?} is {}", rectangle1, rectangle1.area());
+    println!("Rectangle {:?} can hold rectangle {:?}? {}", rectangle1, rectangle2, rectangle1.can_hold(&rectangle2));
 }
 
 #[derive(Debug)]
@@ -21,5 +27,9 @@ impl Rectangle {
 
     fn width(&self) -> bool {
         self.width > 0
+    }
+    
+    fn can_hold(&self, another: &Rectangle) -> bool {
+        self.area() > another.area()
     }
 }
