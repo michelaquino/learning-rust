@@ -17,6 +17,9 @@ fn main() {
 
     println!("localhost: {:?}", localhost);
     println!("loopback: {:?}", loopback);
+
+    println!("localhost: {:?}", IpKind::V4(String::from("127.0.0.1")));
+    println!("loopback: {:?}", IpKind::V6(String::from("::1")));
 }
 
 #[derive(Debug)]
@@ -29,4 +32,10 @@ struct IpAddress {
 enum IpAddrKind {
     V4,
     V6,
+}
+
+#[derive(Debug)]
+enum IpKind {
+    V4(String),
+    V6(String),
 }
