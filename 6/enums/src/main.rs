@@ -23,6 +23,11 @@ fn main() {
    
     println!("[constructor] localhost: {:?}", IpKindConstructor::V4(127, 0, 0, 1));
     println!("[constructor] loopback: {:?}", IpKindConstructor::V6(String::from("::1")));
+
+    println!("This is the message Message::Quit called: {:?}", Message::Quit.call());
+    println!("This is the message Message::Move called: {:?}", Message::Move{x: 1, y: 2}.call());
+    println!("This is the message Message::Write called: {:?}", Message::Write(String::from("A message")).call());
+    println!("This is the message Message::ChangeColor called: {:?}", Message::ChangeColor(1, 2, 3 ).call())
 }
 
 #[derive(Debug)]
@@ -47,4 +52,17 @@ enum IpKind {
 enum IpKindConstructor {
     V4(u8, u8, u8, u8),
     V6(String),
+}
+
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+impl Message {
+    fn call(&self) {
+        println!("The enum was called")
+    }
 }
