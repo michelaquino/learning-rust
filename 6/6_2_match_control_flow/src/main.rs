@@ -3,6 +3,13 @@ fn main() {
     println!("The value of {:?} is {}", Coin::Nickel, value_in_cents(&Coin::Nickel));
     println!("The value of {:?} is {}", Coin::Dime, value_in_cents(&Coin::Dime));
     println!("The value of {:?} is {}", Coin::Quarter(UsState::Alabama), value_in_cents(&Coin::Quarter(UsState::Alabama)));
+
+    let five = Some(5);
+    println!("Five: {:?}", five);
+    let six = plus_one(five);
+    println!("Six: {:?}", six);
+    let none = plus_one(None);
+    println!("None: {:?}", none);
 }
 
 fn value_in_cents(coin: &Coin) -> u8 {
@@ -44,4 +51,11 @@ enum Coin {
     Nickel,
     Dime,
     Quarter(UsState),
+}
+
+fn plus_one(x: Option<i32>) -> Option<i32> {
+    match x {
+        None => None,
+        Some(i) => Some(i+1)
+    }
 }
