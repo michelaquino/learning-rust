@@ -8,9 +8,11 @@ fn main() {
         height: 50,
     };
 
+    dbg!(&rectangle);
+
     println!("The area of rectangle is {}", area(widht, height));
     println!("[Tuple] The area of rectangle is {}", area_tuple(dimensions));
-    println!("[Struct] The area of rectangle is {}", area_struct(&rectangle));
+    println!("[Struct] The area of rectangle {:?} is {}", rectangle, area_struct(&rectangle));
 }
 
 fn area(widht: i32, height: i32) -> i32 {
@@ -21,6 +23,7 @@ fn area_tuple(dimensions: (i32, i32)) -> i32 {
     return dimensions.0 * dimensions.1
 }
 
+#[derive(Debug)]
 struct Rectangle {
     width: i32,
     height: i32
