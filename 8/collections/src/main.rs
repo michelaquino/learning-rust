@@ -1,6 +1,7 @@
 fn main() {
-    vectors();
-    vector_store_multiple_types();
+    // vectors();
+    // vector_store_multiple_types();
+    strings();
 }
 
 fn vectors() {
@@ -55,4 +56,56 @@ fn vector_store_multiple_types() {
     ];
 
     println!("ROW: {:?}", row);
+}
+
+fn strings() {
+    let mut new_string = String::new();
+    println!("Value: {}", new_string);
+    
+    let data = "content";
+    println!("Value: {}", data);
+    
+    let s = data.to_string();
+    println!("Value: {}", s);
+    
+    let s2 = String::from("another content");
+    println!("Value: {}", s2);
+    
+    // UTF-8 encoded
+    let hello = String::from("你好");
+    println!("Value: {}", hello);
+    
+    
+    /////////// Updating string
+    let mut updating = String::from("foo");
+    updating.push(' ');
+    updating.push_str("bar");
+    println!("updating Value: {}", updating);
+    
+    
+    let s1 = String::from("hello");
+    println!("s1: {}", s1);
+    let s2 = String::from("world");
+    println!("s2: {}", s2);
+    
+    let s4 = format!("{} {}", s1, s2);
+    println!("s4: {}", s4);
+    
+    let s3 = s1 + &s2;
+    println!("s3: {}", s3);
+
+
+    let hello = "Здравствуйте";
+    let s = &hello[0..4]; // each char on string has 2 bytes. Here we are get 4 bytes, 2 letters
+    println!("s: {}", s);
+
+    println!("Iterating on string, chars:");
+    for c in hello.chars() {
+        println!("{}", c);
+    }
+    
+    println!("Iterating on string, bytes:");
+    for c in hello.bytes() {
+        println!("{}", c);
+    }
 }
