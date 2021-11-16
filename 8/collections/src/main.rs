@@ -1,7 +1,10 @@
+use std::collections::HashMap;
+
 fn main() {
     // vectors();
     // vector_store_multiple_types();
-    strings();
+    // strings();
+    hashmaps();
 }
 
 fn vectors() {
@@ -103,9 +106,56 @@ fn strings() {
     for c in hello.chars() {
         println!("{}", c);
     }
-    
+
     println!("Iterating on string, bytes:");
     for c in hello.bytes() {
         println!("{}", c);
     }
+}
+
+fn hashmaps() {
+    let mut scores1 = HashMap::new();
+    scores1.insert("yellow", 10);
+    scores1.insert("blue", 10);
+
+    println!("scores1: {:?}", scores1);
+    
+    // Another way to initialize hashmaps
+    let teams = vec![String::from("Blue"), String::from("Yellow")];
+    let initial_scores = vec![10, 50];
+    
+    let scores2: HashMap<_, _> = teams.into_iter().zip(initial_scores.into_iter()).collect();
+    println!("scores2: {:?}", scores2);
+    
+    // Get hashmaps values
+    let blue_score = scores2.get(&String::from("Blue"));
+    println!("blue_score: {:?}", blue_score);
+
+    // Iterating on hashmaps
+    for (key, value) in &scores2 {
+        println!("{}: {}", key, value);
+    }
+
+    // Updating
+    let mut scores_update = HashMap::new();
+
+    scores_update.insert(String::from("Blue"), 10);
+    scores_update.insert(String::from("Blue"), 25);
+
+    // only insert if doesn't exist
+    scores_update.entry(String::from("Yellow")).or_insert(50);
+    scores_update.entry(String::from("Blue")).or_insert(50);
+
+    println!("scores_update: {:?}", scores_update);
+
+    // Example to update based if entry exists
+    let text = "hello world wonderful world";
+
+    let mut map = HashMap::new();
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", map);
 }
